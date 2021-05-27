@@ -1,0 +1,23 @@
+<div>
+  <h3 class="text-center">Articles</h3>
+  <h5 class="text-center text-black-50 my-3">Our blog has <span class="badge bg-info"><%= Article.public_count %></span> articles and counting!
+  </h5>
+  <p class="text-center"><%= link_to "New article", new_article_path, class: "btn btn-success" %></p>
+  <% @articles.each do |article| %>
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-5">
+        <div class="card text-dark bg-light">
+          <div class="card-body">
+            <h5 class="card-title"><%= article.title %></h5>
+            <p class="card-text"><%= article.body %></p>
+            <p>
+              <%= link_to "Show article", article_path(article), class: "btn btn-secondary" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
