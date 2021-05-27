@@ -15,16 +15,24 @@
     </div>
   </div>
 </div>
-<div class="row justify-content-center mt-3">
-  <div class="col-md-5">
-    <h3 class="text-center">Comments</h3>
-    <%= render @article.comments %>
+<div>
+  <%= turbo_stream_from "comments" %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-5">
+      <h3 class="text-center">Comments</h3>
+
+      <%= turbo_frame_tag "comments" do %>
+        <%= render @article.comments %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="row justify-content-center mt-5">
-  <h3 class="text-center mb-4">Add comment</h3>
-  <div class="col-md-12">
-    <%= render "comments/form" %>
+  <div class="row justify-content-center mt-5">
+    <h3 class="text-center mb-4">Add comment</h3>
+    <div class="col-md-12">
+      <%= turbo_frame_tag "comments" do %>
+        <%= render "comments/form" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
